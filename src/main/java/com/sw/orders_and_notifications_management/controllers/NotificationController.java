@@ -21,14 +21,20 @@ public class NotificationController {
 
     @PostMapping("/placement")
     public boolean CreatePlacement(@RequestBody Order order, Customer customer) {
-        Notification notify = notifyService.CreatePlacementNotification(order, customer);
-        return notifyService.AddPlacementNotification(notify);
+        List<Notification> notifys = notifyService.CreatePlacementNotification(order, customer);
+        for (Notification notification : notifys) {
+            notifyService.AddPlacementNotification(notification);
+        }
+        return true;
     }
 
     @PostMapping("/shipment")
     public boolean CreateShipment(@RequestBody Order order, Customer customer) {
-        Notification notify = notifyService.CreateShipmentNotification(order, customer)
-        return notifyService.AddShipmentNotification(notify);
+        List<Notification> notifys = notifyService.CreateShipmentNotification(order, customer);
+        for (Notification notification : notifys) {
+            notifyService.AddShipmentNotification(notification);
+        }
+        return true;
     }
 
     @GetMapping("/placement")
@@ -52,7 +58,8 @@ public class NotificationController {
 
     @DeleteMapping("/shipment/{OrderId}")
     public String deleteShipment(@PathVariable("OrderId") int OrderId) {
-        if (notifyService.RemoveShipmentNotification(OrderId) && notifyService.CheckInShipment(OrderId) && !notifyService.CheckInPlacement(OrderId)) {
+        if (notifyService.RemoveShipmentNotification(OrderId) && notifyService.CheckInShipment(OrderId)
+                && !notifyService.CheckInPlacement(OrderId)) {
             return "Notification Deleted successfully";
         } else {
             return "Unable to delete the Notification";
