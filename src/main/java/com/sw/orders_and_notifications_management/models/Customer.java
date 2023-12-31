@@ -1,6 +1,5 @@
 package com.sw.orders_and_notifications_management.models;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,8 +15,7 @@ public class Customer {
     private long ID;
     private String name;
     private String sendMethod;
-//    private Account account;
-
+    // private Account account;
 
     public long getID() {
         return ID;

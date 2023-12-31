@@ -2,7 +2,6 @@ package com.sw.orders_and_notifications_management.repos;
 import com.sw.orders_and_notifications_management.models.Customer;
 
 import java.util.List;
-
 public class CustomerRepo {
     private List<Customer>  customers;
 
