@@ -1,14 +1,19 @@
 package com.sw.orders_and_notifications_management.models;
 
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Data
+@Entity
 public class Product {
 
-    private String serialNumber;
+    private long serialNumber;
     private String name;
     private String vendor;
     private String category;
     private double price;
 
-    public Product(String serialNumber, String name, String vendor, String category, double price) {
+    public Product(long serialNumber, String name, String vendor, String category, double price) {
         this.serialNumber = serialNumber;
         this.name = name;
         this.vendor = vendor;
@@ -16,7 +21,7 @@ public class Product {
         this.price = price;
     }
 
-    public String getSerialNumber() {
+    public long getProductSerialNumber() {
         return serialNumber;
     }
 
@@ -36,7 +41,7 @@ public class Product {
         return price;
     }
 
-    public void setSerialNumber(String serialNumber) {
+    public void setProductSerialNumber(long serialNumber) {
         this.serialNumber = serialNumber;
     }
 
