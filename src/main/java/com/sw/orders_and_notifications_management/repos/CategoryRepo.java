@@ -76,10 +76,14 @@ public class CategoryRepo {
         return false;
     }
 
-    public Product searchProductInCategory(long categorySerialNumber, long productSerialNumber) {
-        Category category = getCategory(categorySerialNumber);
-        if (category != null) {
-            return category.searchProduct(productSerialNumber);
+    public Product searchProductInCategory(long productSerialNumber) {
+        for(Category category1 : categories){
+            List<Product> products = category1.getProducts();
+            for(Product product1 : products){
+                if(product1.getProductSerialNumber() == productSerialNumber){
+                    return product1;
+                }
+            }
         }
         return null;
     }

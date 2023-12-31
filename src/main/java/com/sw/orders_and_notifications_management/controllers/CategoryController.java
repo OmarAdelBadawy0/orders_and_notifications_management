@@ -62,9 +62,8 @@ public class CategoryController {
     }
 
     @GetMapping("/{categorySerialNumber}/searchProduct/{productSerialNumber}")
-    public Product searchProductInCategory(@PathVariable("categorySerialNumber") long categorySerialNumber,
-                                           @PathVariable("productSerialNumber") long productSerialNumber) {
-        return categoryService.searchProductInCategory(categorySerialNumber, productSerialNumber);
+    public Product searchProductInCategory(@PathVariable("productSerialNumber") long productSerialNumber) {
+        return categoryService.searchProductInCategory( productSerialNumber);
     }
 
 }

@@ -41,7 +41,7 @@ public class CategoryService {
         return categoryRepo.deleteProductFromCategory(categorySerialNumber, productSerialNumber);
     }
 
-    public Product searchProductInCategory(long categorySerialNumber, long productSerialNumber) {
-        return categoryRepo.searchProductInCategory(categorySerialNumber, productSerialNumber);
+    public Product searchProductInCategory( long productSerialNumber) {
+        return categoryRepo.searchProductInCategory( productSerialNumber);
     }
 }
