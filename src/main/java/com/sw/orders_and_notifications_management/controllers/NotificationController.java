@@ -37,14 +37,28 @@ public class NotificationController {
         return true;
     }
 
-    @GetMapping("/placement")
-    public List<Notification> getPlacement() {
-        return notifyService.ListPlacementNotifications();
+    @GetMapping("/placements")
+    public String getPlacement() {
+        String Message = "";
+        List<Notification> notifys = notifyService.ListPlacementNotifications();
+        for (Notification notification : notifys) {
+            Message += "Order ID: " + notification.GetOID() + "\n" + "Customer ID: " + notification.GetCID() + "\n"
+                    + "Channel: " + notification.GetChannel() + "\n" + "Content: " + notification.GetContent() + "\n"
+                    + "------------------" + "\n";
+        }
+        return Message;
     }
 
-    @GetMapping("/shipment")
-    public List<Notification> getShipment() {
-        return notifyService.ListShipmentNotifications();
+    @GetMapping("/shipments")
+    public String getShipment() {
+        String Message = "";
+        List<Notification> notifys = notifyService.ListShipmentNotifications();
+        for (Notification notification : notifys) {
+            Message += "Order ID: " + notification.GetOID() + "\n" + "Customer ID: " + notification.GetCID() + "\n"
+                    + "Channel: " + notification.GetChannel() + "\n" + "Content: " + notification.GetContent() + "\n"
+                    + "------------------" + "\n";
+        }
+        return Message;
     }
 
     @DeleteMapping("/placement/{OrderId}")
